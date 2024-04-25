@@ -34,10 +34,13 @@ file_path = "bloomberg_quint_news.json"
 config = None
 config_file = "config.json"
 # Open the file in read mode
+
+
 def main():
+
     with open(config_file, "r") as file:
         # Load the JSON data
-        config = json.load(file)
+        config = json.load(file)["annotation"]
 
     with open(file_path, "r") as file:
         # Load the JSON data

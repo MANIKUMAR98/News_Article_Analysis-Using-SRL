@@ -83,7 +83,7 @@ def perform_annotations(doc, verb_actor_mapping, noun_actor_list):
                 involved_actors = actors[0] + actors[1]
                 for act in involved_actors:
                     if act in names:
-                        index  = names.index(act)
+                        index = names.index(act)
                         if index < N_actors:
                             action_annotation[index] = 1
             else:

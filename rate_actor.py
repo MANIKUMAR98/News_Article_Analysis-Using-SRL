@@ -5,10 +5,9 @@ Date: April 23, 2024
 Description: Main file to generate ranking of actors in news article.
 """
 import os
-import csv
+import time
 import gensim.downloader as api
-import json
-import spacy
+import gensim
 import argparse
 from annotation_generator import *
 from noun_actor_list import *
@@ -17,20 +16,25 @@ from dependency_tree_parser import *
 from actor_action_mapping import *
 from bert_model_action_actor_predictor import *
 from impact_score_ranking import *
+import logging
 
 model_name = 'word2vec-google-news-300'
 NER_List = ['ORG', "GPE", "PRODUCT", "NORP", "LOC", "FAC", "LAW", 'PERSON', 'EVENT']
+# model = gensim.downloader.load(model_name)
 
+logging.basicConfig(filename='gensim_model_loading.log', level=logging.DEBUG,
+                    format='%(asctime)s %(levelname)s:%(message)s')
 
-def is_model_downloaded(model_name):
-    # Check if the model is in the list of downloaded models
-    return model_name in api.info()['models']
+model_name = 'word2vec-google-news-300'  # Example model name
+model = None
+try:
+    model = api.load(model_name)
+    logging.info("Model loaded successfully!")
+except Exception as e:
+    logging.error("Failed to load the model due to an error: %s", e)
+    print(f"An error occurred: {e}")
+    model = None
 
-
-if not is_model_downloaded(model_name):
-    model = api.load(model_name)  # This will download and load the model
-else:
-    model = api.load(model_name, return_path=False)  # Load the model without downloading
 
 nlp = spacy.load('en_core_web_trf')
 nlp.add_pipe('coreferee')
@@ -55,6 +59,7 @@ def rate_actor(text):
     final_actor_action = merge_bert_spacy_mapping(actor_action_spacy_mapping, bert_mapping)
     get_ranking(final_actor_action)
     get_graph(final_actor_action)
+    time.sleep(360)
 
 
 def main():

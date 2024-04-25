@@ -4,9 +4,21 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-spacy = "*"
+spacy = "==3.5.0"
+charset-normalizer = "*"
+chardet = "*"
+scipy = "==1.12.0"
+gensim = "==4.3.2"
+nltk = "==3.8.1"
+pandas = "*"
+textblob = "*"
+vadersentiment = "*"
+afinn = "*"
+tabulate = "*"
+seaborn = "*"
+pyparsing = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.12"
+python_version = "3.11"

@@ -1,0 +1,3 @@
+2024-04-24 21:05:02,392 INFO:loading projection weights from C:\Users\nisch/gensim-data\word2vec-google-news-300\word2vec-google-news-300.gz
+2024-04-24 21:05:02,403 DEBUG:{'uri': 'C:\\Users\\nisch/gensim-data\\word2vec-google-news-300\\word2vec-google-news-300.gz', 'mode': 'rb', 'buffering': -1, 'encoding': None, 'errors': None, 'newline': None, 'closefd': True, 'opener': None, 'compression': 'infer_from_extension', 'transport_params': None}
+2024-04-24 21:05:02,419 ERROR:Failed to load the model due to an error: Unable to allocate 3.35 GiB for an array with shape (3000000, 300) and data type float32

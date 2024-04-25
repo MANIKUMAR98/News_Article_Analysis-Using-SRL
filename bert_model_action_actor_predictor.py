@@ -6,18 +6,26 @@ Description: Main file to generate ranking of actors in news article.
 """
 import torch
 import copy
+import json
 from transformers import RobertaTokenizer, RobertaForTokenClassification
 import spacy
 import numpy as np
 from concat_names import *
 
+config_file = "config.json"
+with open(config_file, "r") as file:
+        # Load the JSON data
+        config = json.load(file)["testing_config"]
+
 nlp = spacy.load('en_core_web_trf')
 nlp.add_pipe('coreferee')
-N_ACTORS = 20
-save_directory = "./saved_tokenizer"
-save_model = "./saved_model"
+N_ACTORS = int(config["N_ACTOR"])
+save_model = config["save_model_path"]
+save_tokenizer = config["save_tokenizer_path"]
+max_length_sentence = config["MAX_SENTENCE_LENGTH"]
+
 device = torch.device("cpu")
-bert_tokenizer = RobertaTokenizer.from_pretrained(save_directory)
+bert_tokenizer = RobertaTokenizer.from_pretrained(save_tokenizer)
 model = RobertaForTokenClassification.from_pretrained(save_model)
 
 NER_List = ['ORG', "GPE", "PRODUCT", "NORP", "LOC", "FAC", "LAW", 'PERSON', 'EVENT']
@@ -100,7 +108,7 @@ def get_bert_model_prediction(doc):
         token_ids = [bert_tokenizer.convert_tokens_to_ids(
             token) if token in bert_tokenizer.get_vocab() else bert_tokenizer.unk_token_id for token in each_sentence]
         token_ids = [bert_tokenizer.cls_token_id] + token_ids + [bert_tokenizer.sep_token_id]
-        pad_length = 252 - len(token_ids)
+        pad_length = max_length_sentence + 2 - len(token_ids)
         attention_mask = [1] * len(token_ids)
         token_ids += [bert_tokenizer.pad_token_id] * pad_length
         attention_mask += [0] * pad_length  # Attention mask

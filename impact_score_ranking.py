@@ -3,13 +3,13 @@ import nltk
 import spacy
 from afinn import Afinn
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
-nltk.download('punkt')
-from transformers import pipeline
-
-nlt = pipeline("sentiment-analysis")
-import matplotlib.pyplot as plt
-from tabulate import tabulate
+#
+# # nltk.download('punkt')
+# from transformers import pipeline
+#
+# nlt = pipeline("sentiment-analysis")
+# import matplotlib.pyplot as plt
+# from tabulate import tabulate
 
 
 def tbr(verb):
