@@ -1,8 +1,8 @@
 """
-File: concat_names.py
+File: bert_model_action_actor_prediction.py
 Author: Nischith Bairannanavara Omprakash
 Date: April 23, 2024
-Description: Main file to generate ranking of actors in news article.
+Description: Main file to generate ranking of actors in news article using BERT model.
 """
 import torch
 import copy

@@ -1,3 +1,9 @@
+"""
+File: imapact_score_ranking.py
+Author: Dinesh Ram
+Date: April 23, 2024,
+Description: File for impact score calculation.
+"""
 from textblob import TextBlob
 import nltk
 import spacy

@@ -1,5 +1,5 @@
 """
-File: concat_names.py
+File: annotation_generator.py
 Author: Nischith Bairannanavara Omprakash
 Date: April 23, 2024
 Description: Contains method to generate annotations.

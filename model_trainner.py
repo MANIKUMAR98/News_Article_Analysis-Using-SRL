@@ -1,5 +1,5 @@
 """
-File: concat_names.py
+File: model_trainner.py
 Author: Nischith Bairannanavara Omprakash
 Date: April 23, 2024
 Description: File for bert fine-tuning.

@@ -1,8 +1,8 @@
 """
-File: dependency_tree_parser.py
+File: noun_actor_list.py
 Author: Nischith Bairannanavara Omprakash
 Date: April 23, 2024,
-Description: Contains methods to get noun in the text which act as actors
+Description: Contains methods to get noun in the text which act as actors.
 """
 import nltk
 

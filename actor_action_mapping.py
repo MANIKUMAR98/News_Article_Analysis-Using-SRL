@@ -1,5 +1,5 @@
 """
-File: concat_names.py
+File: actor_action_mapping.py
 Author: Nischith Bairannanavara Omprakash
 Date: April 23, 2024
 Description: Contains helper methods to map actor and action words.
